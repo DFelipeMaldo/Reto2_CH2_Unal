@@ -17,6 +17,15 @@ public class RaceManager : MonoBehaviour
     public float timeBetweenPosCheck = .2f;
     private float posChkCounter;
 
+    public float aiDefaultSpeed = 30f, playerDefaultSpeed = 30f, rubberBandSpeedMod = 3.5f, rubBandAccel = .5f;
+
+    public bool isStarting;
+    public float timeBetweenStartCount = 1f;
+    private float startCounter;
+    public int countdownCurrent = 3;
+
+    public bool raceCompleted;
+
     private void Awake()
     {
         instance = this;
@@ -31,6 +40,10 @@ public class RaceManager : MonoBehaviour
             allCheckpoints[i].cpNumber = i;
         }
 
+        isStarting = true;
+        startCounter = timeBetweenStartCount;
+
+        UIManager.instance.countDownText.text = countdownCurrent + "!";
 
     }
 
@@ -38,35 +51,112 @@ public class RaceManager : MonoBehaviour
     void Update()
     {
 
-        posChkCounter -= Time.deltaTime;
-        if (posChkCounter <= 0)
+        if (isStarting)
+        {
+            startCounter -= Time.deltaTime;
+            if (startCounter <= 0)
+            {
+                countdownCurrent--;
+                startCounter = timeBetweenStartCount;
+
+                UIManager.instance.countDownText.text = countdownCurrent + "!";
+
+                if (countdownCurrent == 0)
+                {
+                    isStarting = false;
+
+                    UIManager.instance.countDownText.gameObject.SetActive(false);
+                    UIManager.instance.goText.gameObject.SetActive(true);
+                }
+            }
+        }
+        else
         {
 
-            playerPosition = 1;
-
-            foreach (CarController aiCar in allAICars)
+            posChkCounter -= Time.deltaTime;
+            if (posChkCounter <= 0)
             {
-                if (aiCar.currentLap > playerCar.currentLap)
+
+                playerPosition = 1;
+
+                foreach (CarController aiCar in allAICars)
                 {
-                    playerPosition++;
-                }
-                else if (aiCar.currentLap == playerCar.currentLap)
-                {
-                    if (aiCar.nextCheckpoint > playerCar.nextCheckpoint)
+                    if (aiCar.currentLap > playerCar.currentLap)
                     {
                         playerPosition++;
                     }
-                    else if (aiCar.nextCheckpoint == playerCar.nextCheckpoint)
+                    else if (aiCar.currentLap == playerCar.currentLap)
                     {
-                        if (Vector3.Distance(aiCar.transform.position, allCheckpoints[aiCar.nextCheckpoint].transform.position) < Vector3.Distance(playerCar.transform.position, allCheckpoints[aiCar.nextCheckpoint].transform.position))
+                        if (aiCar.nextCheckpoint > playerCar.nextCheckpoint)
                         {
                             playerPosition++;
                         }
+                        else if (aiCar.nextCheckpoint == playerCar.nextCheckpoint)
+                        {
+                            if (Vector3.Distance(aiCar.transform.position, allCheckpoints[aiCar.nextCheckpoint].transform.position) < Vector3.Distance(playerCar.transform.position, allCheckpoints[aiCar.nextCheckpoint].transform.position))
+                            {
+                                playerPosition++;
+                            }
+                        }
                     }
                 }
+
+                posChkCounter = timeBetweenPosCheck;
+
+                UIManager.instance.positionText.text = playerPosition + "/" + (allAICars.Count + 1);
             }
-            posChkCounter = timeBetweenPosCheck;
-            UIManager.instance.positionText.text = playerPosition + "/" + (allAICars.Count + 1);
+
+            if (playerPosition == 1)
+            {
+                foreach (CarController aiCar in allAICars)
+                {
+                    aiCar.maxSpeed = Mathf.MoveTowards(aiCar.maxSpeed, aiDefaultSpeed + rubberBandSpeedMod, rubBandAccel * Time.deltaTime);
+                }
+
+                playerCar.maxSpeed = Mathf.MoveTowards(playerCar.maxSpeed, playerDefaultSpeed - rubberBandSpeedMod, rubBandAccel * Time.deltaTime);
+            }
+            else
+            {
+                foreach (CarController aiCar in allAICars)
+                {
+                    aiCar.maxSpeed = Mathf.MoveTowards(aiCar.maxSpeed, aiDefaultSpeed - (rubberBandSpeedMod * ((float)playerPosition / ((float)allAICars.Count + 1))), rubBandAccel * Time.deltaTime);
+                }
+
+                playerCar.maxSpeed = Mathf.MoveTowards(playerCar.maxSpeed, playerDefaultSpeed + (rubberBandSpeedMod * ((float)playerPosition / ((float)allAICars.Count + 1))), rubBandAccel * Time.deltaTime);
+            }
+
         }
+    }
+    public void FinishRace()
+    {
+        raceCompleted = true;
+
+
+        switch (playerPosition)
+        {
+            case 1:
+                UIManager.instance.raceResultText.text = "You finished 1st";
+
+                break;
+
+            case 2:
+                UIManager.instance.raceResultText.text = "You finished 2nd";
+
+                break;
+
+            case 3:
+                UIManager.instance.raceResultText.text = "You finished 3rd";
+
+                break;
+
+            default:
+
+                UIManager.instance.raceResultText.text = "You finished " + playerPosition + "th";
+
+                break;
+        }
+
+
+        UIManager.instance.resultsScreen.SetActive(true);
     }
 }
