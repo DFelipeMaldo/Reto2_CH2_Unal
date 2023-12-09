@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController1 : MonoBehaviour
 {
-    public CarController target;
+    public CarController1 target;
     private Vector3 offsetDir;
 
     public float minDistance, maxDistance;

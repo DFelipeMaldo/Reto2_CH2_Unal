@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisableTime : MonoBehaviour
+public class DisableTime1 : MonoBehaviour
 {
     public float timeToDisable;
 

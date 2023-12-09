@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Checkpoint : MonoBehaviour
+public class Checkpoint1 : MonoBehaviour
 {
     public int cpNumber;
 }

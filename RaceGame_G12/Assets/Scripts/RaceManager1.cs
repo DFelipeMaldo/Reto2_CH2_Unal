@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RaceManager : MonoBehaviour
+public class RaceManager1 : MonoBehaviour
 {
-    public static RaceManager instance;
+    public static RaceManager1 instance;
 
-    public Checkpoint[] allCheckpoints;
+    public Checkpoint1[] allCheckpoints;
 
     public int totalLaps;
 
-    public CarController playerCar;
-    public List<CarController> allAICars = new List<CarController>();
+    public CarController1 playerCar;
+    public List<CarController1> allAICars = new List<CarController1>();
     public int playerPosition;
     public float timeBetweenPosCheck = .2f;
     private float posChkCounter;
@@ -43,7 +43,7 @@ public class RaceManager : MonoBehaviour
         isStarting = true;
         startCounter = timeBetweenStartCount;
 
-        UIManager.instance.countDownText.text = countdownCurrent + "!";
+        UIManager1.instance.countDownText.text = countdownCurrent + "!";
 
     }
 
@@ -59,14 +59,14 @@ public class RaceManager : MonoBehaviour
                 countdownCurrent--;
                 startCounter = timeBetweenStartCount;
 
-                UIManager.instance.countDownText.text = countdownCurrent + "!";
+                UIManager1.instance.countDownText.text = countdownCurrent + "!";
 
                 if (countdownCurrent == 0)
                 {
                     isStarting = false;
 
-                    UIManager.instance.countDownText.gameObject.SetActive(false);
-                    UIManager.instance.goText.gameObject.SetActive(true);
+                    UIManager1.instance.countDownText.gameObject.SetActive(false);
+                    UIManager1.instance.goText.gameObject.SetActive(true);
                 }
             }
         }
@@ -79,7 +79,7 @@ public class RaceManager : MonoBehaviour
 
                 playerPosition = 1;
 
-                foreach (CarController aiCar in allAICars)
+                foreach (CarController1 aiCar in allAICars)
                 {
                     if (aiCar.currentLap > playerCar.currentLap)
                     {
@@ -103,12 +103,12 @@ public class RaceManager : MonoBehaviour
 
                 posChkCounter = timeBetweenPosCheck;
 
-                UIManager.instance.positionText.text = playerPosition + "/" + (allAICars.Count + 1);
+                UIManager1.instance.positionText.text = playerPosition + "/" + (allAICars.Count + 1);
             }
 
             if (playerPosition == 1)
             {
-                foreach (CarController aiCar in allAICars)
+                foreach (CarController1 aiCar in allAICars)
                 {
                     aiCar.maxSpeed = Mathf.MoveTowards(aiCar.maxSpeed, aiDefaultSpeed + rubberBandSpeedMod, rubBandAccel * Time.deltaTime);
                 }
@@ -117,7 +117,7 @@ public class RaceManager : MonoBehaviour
             }
             else
             {
-                foreach (CarController aiCar in allAICars)
+                foreach (CarController1 aiCar in allAICars)
                 {
                     aiCar.maxSpeed = Mathf.MoveTowards(aiCar.maxSpeed, aiDefaultSpeed - (rubberBandSpeedMod * ((float)playerPosition / ((float)allAICars.Count + 1))), rubBandAccel * Time.deltaTime);
                 }
@@ -135,28 +135,28 @@ public class RaceManager : MonoBehaviour
         switch (playerPosition)
         {
             case 1:
-                UIManager.instance.raceResultText.text = "You finished 1st";
+                UIManager1.instance.raceResultText.text = "You finished 1st";
 
                 break;
 
             case 2:
-                UIManager.instance.raceResultText.text = "You finished 2nd";
+                UIManager1.instance.raceResultText.text = "You finished 2nd";
 
                 break;
 
             case 3:
-                UIManager.instance.raceResultText.text = "You finished 3rd";
+                UIManager1.instance.raceResultText.text = "You finished 3rd";
 
                 break;
 
             default:
 
-                UIManager.instance.raceResultText.text = "You finished " + playerPosition + "th";
+                UIManager1.instance.raceResultText.text = "You finished " + playerPosition + "th";
 
                 break;
         }
 
 
-        UIManager.instance.resultsScreen.SetActive(true);
+        UIManager1.instance.resultsScreen.SetActive(true);
     }
 }

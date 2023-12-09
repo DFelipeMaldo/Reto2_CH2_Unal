@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraSwitcher : MonoBehaviour
+public class CameraSwitcher1 : MonoBehaviour
 {
     public GameObject[] cameras;
     private int currentCam;

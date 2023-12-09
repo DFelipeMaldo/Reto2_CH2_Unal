@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class CarController1 : MonoBehaviour
 {
     public Rigidbody theRB;
 
@@ -52,14 +52,14 @@ public class CarController : MonoBehaviour
 
         if (isAI)
         {
-            targetPoint = RaceManager.instance.allCheckpoints[currentTarget].transform.position;
+            targetPoint = RaceManager1.instance.allCheckpoints[currentTarget].transform.position;
             RandomiseAITarget();
 
             aiSpeedMod = Random.Range(.8f, 1.1f);
 
         }
 
-        UIManager.instance.lapCounterText.text = currentLap + "/" + RaceManager.instance.totalLaps;
+        UIManager1.instance.lapCounterText.text = currentLap + "/" + RaceManager1.instance.totalLaps;
 
         resetCounter = resetCooldown;
     }
@@ -67,7 +67,7 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!RaceManager.instance.isStarting)
+        if (!RaceManager1.instance.isStarting)
         {
             lapTime += Time.deltaTime;
 
@@ -75,7 +75,7 @@ public class CarController : MonoBehaviour
             if (!isAI)
             {
                 var ts = System.TimeSpan.FromSeconds(lapTime);
-                UIManager.instance.currentLapTimeText.text = string.Format("{0:00}m{1:00}.{2:000}s", ts.Minutes, ts.Seconds, ts.Milliseconds);
+                UIManager1.instance.currentLapTimeText.text = string.Format("{0:00}m{1:00}.{2:000}s", ts.Minutes, ts.Seconds, ts.Milliseconds);
 
                 speedInput = 0f;
                 if (Input.GetAxis("Vertical") > 0)
@@ -205,7 +205,7 @@ public class CarController : MonoBehaviour
         {
             nextCheckpoint++;
 
-            if (nextCheckpoint == RaceManager.instance.allCheckpoints.Length)
+            if (nextCheckpoint == RaceManager1.instance.allCheckpoints.Length)
             {
                 nextCheckpoint = 0;
                 LapCompleted();
@@ -224,12 +224,12 @@ public class CarController : MonoBehaviour
     public void SetNextAITarget()
     {
         currentTarget++;
-        if (currentTarget >= RaceManager.instance.allCheckpoints.Length)
+        if (currentTarget >= RaceManager1.instance.allCheckpoints.Length)
         {
             currentTarget = 0;
         }
 
-        targetPoint = RaceManager.instance.allCheckpoints[currentTarget].transform.position;
+        targetPoint = RaceManager1.instance.allCheckpoints[currentTarget].transform.position;
         RandomiseAITarget();
     }
 
@@ -243,7 +243,7 @@ public class CarController : MonoBehaviour
             bestLapTime = lapTime;
         }
 
-        if (currentLap <= RaceManager.instance.totalLaps)
+        if (currentLap <= RaceManager1.instance.totalLaps)
         {
 
             lapTime = 0f;
@@ -251,9 +251,9 @@ public class CarController : MonoBehaviour
             if (!isAI)
             {
                 var ts = System.TimeSpan.FromSeconds(bestLapTime);
-                UIManager.instance.bestLapTimeText.text = string.Format("{0:00}m{1:00}.{2:000}s", ts.Minutes, ts.Seconds, ts.Milliseconds);
+                UIManager1.instance.bestLapTimeText.text = string.Format("{0:00}m{1:00}.{2:000}s", ts.Minutes, ts.Seconds, ts.Milliseconds);
 
-                UIManager.instance.lapCounterText.text = currentLap + "/" + RaceManager.instance.totalLaps;
+                UIManager1.instance.lapCounterText.text = currentLap + "/" + RaceManager1.instance.totalLaps;
             }
         }
         else
@@ -263,13 +263,13 @@ public class CarController : MonoBehaviour
                 isAI = true;
                 aiSpeedMod = 1f;
 
-                targetPoint = RaceManager.instance.allCheckpoints[currentTarget].transform.position;
+                targetPoint = RaceManager1.instance.allCheckpoints[currentTarget].transform.position;
                 RandomiseAITarget();
 
                 var ts = System.TimeSpan.FromSeconds(bestLapTime);
-                UIManager.instance.bestLapTimeText.text = string.Format("{0:00}m{1:00}.{2:000}s", ts.Minutes, ts.Seconds, ts.Milliseconds);
+                UIManager1.instance.bestLapTimeText.text = string.Format("{0:00}m{1:00}.{2:000}s", ts.Minutes, ts.Seconds, ts.Milliseconds);
 
-                RaceManager.instance.FinishRace();
+                RaceManager1.instance.FinishRace();
             }
         }
     }
@@ -286,10 +286,10 @@ public class CarController : MonoBehaviour
         int pointToGoTo = nextCheckpoint - 1;
         if (pointToGoTo < 0)
         {
-            pointToGoTo = RaceManager.instance.allCheckpoints.Length - 1;
+            pointToGoTo = RaceManager1.instance.allCheckpoints.Length - 1;
         }
 
-        transform.position = RaceManager.instance.allCheckpoints[pointToGoTo].transform.position;
+        transform.position = RaceManager1.instance.allCheckpoints[pointToGoTo].transform.position;
         theRB.transform.position = transform.position;
         theRB.velocity = Vector3.zero;
 
