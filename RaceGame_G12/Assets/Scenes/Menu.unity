@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.848, g: 0.908, b: 1.036, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -6341,10 +6341,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: "In the world of video games, our project is focus on innovation, quality,
     and compelling narratives, our team of talented developers is dedicated to forging
-    worlds filled with unforgettable adventures. Join our community and be carried
-    away by the magic of video games. Special thanks to Kenney for the free assets
-    to create our game, for ATENEA and National University of Colombia. \n\nDevelopers:
-    Cristian Wilches (Lvl 2), Diego Maldonado (Lvl 1) and Hugo Vaquero (UI).\n\n"
+    the best. Join our community and be carried away by the magic of video games.
+    Special thanks to Kenney for the free assets to create our game, for ATENEA and
+    National University of Colombia. \n\nDevelopers: Cristian Wilches (Lvl 2), Diego
+    Maldonado (Lvl 1) and Hugo Vaquero (UI).\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbb78e35599b4b74c9b1bd3930dd80c2, type: 2}
   m_sharedMaterial: {fileID: 7983353322862511886, guid: bbb78e35599b4b74c9b1bd3930dd80c2, type: 2}
@@ -8111,10 +8111,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Welcome to Genesis: Speed Evolution!\r\n\nCompletely immerse yourself
-    in this dystopian universe trapped in the 80's.\r\n\r\nBelow you will find a
+    in this low pixel universe trapped in the races.\r\n\r\nBelow you will find a
     help text that will guide you through the key aspects of the game:\r\n\r\r\nMove
-    your car with the keys arrows or with W, A, S, D. Change the view of your camera
-    press key C."
+    your car by pressing the keys arrows or the  W, A, S, D keys. Change the view
+    of your camera, key C. Restar in the last Checkpoint, key R."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbb78e35599b4b74c9b1bd3930dd80c2, type: 2}
   m_sharedMaterial: {fileID: 7983353322862511886, guid: bbb78e35599b4b74c9b1bd3930dd80c2, type: 2}
