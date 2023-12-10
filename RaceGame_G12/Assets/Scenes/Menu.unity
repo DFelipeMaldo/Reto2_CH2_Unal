@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -1799,9 +1799,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1855,27 +1863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!1 &387872867
 GameObject:
   m_ObjectHideFlags: 0
@@ -3318,7 +3305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -68}
+  m_AnchoredPosition: {x: 10, y: -98}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637681237
@@ -6352,18 +6339,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'In the world of video games, PixelForge Games stands out as a development
-    studio passionate about creating unique and exciting experiences. With a focus
-    on innovation, quality, and compelling narratives, our team of talented developers
-    is dedicated to forging worlds filled with unforgettable adventures. Join our
-    community and be carried away by the magic of video games at PixelForge Games.
-
-
-    Motto:
-    "Forging worlds, creating adventures"
-
-
-'
+  m_text: "In the world of video games, our project is focus on innovation, quality,
+    and compelling narratives, our team of talented developers is dedicated to forging
+    worlds filled with unforgettable adventures. Join our community and be carried
+    away by the magic of video games. Special thanks to Kenney for the free assets
+    to create our game, for ATENEA and National University of Colombia. \n\nDevelopers:
+    Cristian Wilches (Lvl 2), Diego Maldonado (Lvl 1) and Hugo Vaquero (UI).\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbb78e35599b4b74c9b1bd3930dd80c2, type: 2}
   m_sharedMaterial: {fileID: 7983353322862511886, guid: bbb78e35599b4b74c9b1bd3930dd80c2, type: 2}
@@ -8131,32 +8112,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Welcome to Genesis: Speed Evolution!\r\n\nCompletely immerse yourself
     in this dystopian universe trapped in the 80's.\r\n\r\nBelow you will find a
-    help text that will guide you through the key aspects of the game:\r\n\r\n    
-    Select and customize your pilot:\r\n         In Genesis: Speed Evolution, you
-    are free to choose from a variety of unique and talented drivers. Each pilot
-    has special abilities and characteristics, so be sure to check out their profiles
-    before making your decision.\r\n         You can customize the look of your pilot
-    by selecting different outfits and accessories. Unleash your creativity and make
-    your driver stand out in the races!\r\n\r\n     Game modes:\r\n         Quick
-    Race: If you just want to enjoy a race without worrying about rankings or challenges,
-    choose the Quick Race mode. Choose the circuit and compete against the AI or
-    challenge your friends in local multiplayer mode.\r\n         Story Mode \u2013
-    Immerse yourself in an exciting storyline as you compete in a series of challenging
-    races. As you progress, you'll discover more about the parallel universe and
-    history of Genesis: Speed Evolution.\r\n\r\n     Power-ups and special abilities:\r\n        
-    During the races, you will find power-ups in the form of icons on the track.
-    Pick them up for temporary buffs such as increased speed, protection from attacks
-    from other pilots, or special abilities unique to your pilot.\r\n         Each
-    pilot has a unique special ability. Make sure to use it strategically at key
-    moments in the race to get past your rivals and take the lead.\r\n\r\n     Upgrades
-    and unlockables:\r\n         As you progress through the game, you will be able
-    to unlock new tracks, vehicles and upgrades for your driver.\r\n         Use
-    the experience points you earn to improve the skills of your driver and the performance
-    of your vehicle. This will help you compete at higher levels and face more difficult
-    challenges.\r\n\r\n     Personalization Options:\r\n         Genesis: Speed Evolution
-    allows you to customize your gaming experience by adjusting settings like music,
-    sound effects, and difficulty.\r\n         You can also change the language of
-    the texts and subtitles to adapt the game to your preferences."
+    help text that will guide you through the key aspects of the game:\r\n\r\r\nMove
+    your car with the keys arrows or with W, A, S, D. Change the view of your camera
+    press key C."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbb78e35599b4b74c9b1bd3930dd80c2, type: 2}
   m_sharedMaterial: {fileID: 7983353322862511886, guid: bbb78e35599b4b74c9b1bd3930dd80c2, type: 2}
@@ -8183,7 +8141,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 21.75
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8572,7 +8530,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -9043,7 +9003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1038, y: 273}
+  m_AnchoredPosition: {x: -958, y: 273}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1718104060
